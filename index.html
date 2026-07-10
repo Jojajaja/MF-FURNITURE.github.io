@@ -3,233 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Furniture Price List</title>
-    <!-- Import a modern, bold sans-serif font matching the image -->
+    <title>Dynamic Furniture Price List</title>
+    <!-- Import a modern, bold sans-serif font matching the layout style -->
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Montserrat', sans-serif;
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Montserrat', sans-serif; 
         }
-
-        body {
-            background-color: #f5f5f5;
-            padding: 40px 20px;
+        
+        body { 
+            background-color: #f5f5f5; 
+            padding: 40px 20px; 
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
         }
-
+        
         /* Top Header Area */
-        .header-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 30px;
+        .header-section { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+            margin-bottom: 30px; 
         }
-
-        .header-text {
-            font-size: 14px;
-            color: #555;
-            max-width: 70%;
-            line-height: 1.5;
+        
+        .header-text { 
+            font-size: 14px; 
+            color: #555; 
+            max-width: 70%; 
+            line-height: 1.5; 
         }
-
-        .product-badge {
-            background-color: #000;
-            color: #fff;
-            padding: 10px 15px;
-            font-weight: 900;
-            font-size: 16px;
-            letter-spacing: 0.5px;
+        
+        .product-badge { 
+            background-color: #000; 
+            color: #fff; 
+            padding: 10px 15px; 
+            font-weight: 900; 
+            font-size: 16px; 
+            letter-spacing: 0.5px; 
         }
-
+        
         /* Responsive Grid Setup */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
+        .product-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+            gap: 20px; 
         }
-
+        
         /* Individual Card Styling */
-        .product-card {
-            background: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        .product-card { 
+            background: #fff; 
+            border-radius: 8px; 
+            padding: 20px; 
+            display: flex; 
+            flex-direction: column; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03); 
         }
-
+        
         /* Image Wrapper with fixed height */
-        .image-container {
-            height: 160px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
+        .image-container { 
+            height: 160px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin-bottom: 20px; 
         }
-
-        .image-container img {
-            max-height: 100%;
-            max-width: 100%;
-            object-fit: contain;
+        
+        .image-container img { 
+            max-height: 100%; 
+            max-width: 100%; 
+            object-fit: contain; 
         }
-
+        
         /* Typography & Details */
-        .product-title {
-            font-size: 18px;
-            font-weight: 900;
-            text-transform: uppercase;
-            color: #000;
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
+        .product-title { 
+            font-size: 18px; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            color: #000; 
+            margin-bottom: 8px; 
+            letter-spacing: -0.5px; 
         }
-
-        .product-desc {
-            font-size: 11px;
-            color: #777;
-            line-height: 1.4;
-            margin-bottom: 20px;
-            flex-grow: 1; /* Pushes price block down evenly */
+        
+        .product-desc { 
+            font-size: 11px; 
+            color: #777; 
+            line-height: 1.4; 
+            margin-bottom: 20px; 
+            flex-grow: 1; 
         }
-
+        
         /* Price Layout Elements */
-        .price-row {
-            display: flex;
-            align-items: baseline;
-            margin-bottom: 6px;
+        .price-row { 
+            display: flex; 
+            align-items: baseline; 
+            margin-bottom: 6px; 
         }
-
-        .price-label {
-            font-size: 10px;
-            font-weight: 700;
-            color: #555;
-            width: 40px;
+        
+        .price-label { 
+            font-size: 10px; 
+            font-weight: 700; 
+            color: #555; 
+            width: 40px; 
         }
-
-        .price-value {
-            font-size: 16px;
-            font-weight: 700;
-            color: #000;
+        
+        .price-value { 
+            font-size: 16px; 
+            font-weight: 700; 
+            color: #000; 
         }
-
-        .price-row.discount .price-value {
-            color: #e53935; /* Matching the red DP price look */
-            font-size: 18px;
+        
+        .price-row.discount .price-value { 
+            color: #e53935; 
+            font-size: 18px; 
+        }
+        
+        .loading-text { 
+            font-size: 18px; 
+            text-align: center; 
+            grid-column: 1 / -1; 
+            padding: 40px; 
+            color: #666; 
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Top Row -->
+    <!-- Top Row Header Section -->
     <div class="header-section">
         <p class="header-text">
-            With premium materials and ergonomic designs, our signature luxury furniture pieces are the perfect way to transform your living room and elevate your home layout.
+            Our active web inventory syncs directly with live price catalogs. Explore details, SRP baselines, and discounted vendor promotional structures below.
         </p>
-        <div class="product-badge">5 products</div>
+        <div class="product-badge" id="count-badge">0 products</div>
     </div>
 
-    <!-- Furniture Grid Items -->
-    <div class="product-grid">
-        
-        <!-- Item 1 -->
-        <div class="product-card">
-            <div class="image-container">
-                <img src="https://unsplash.com" alt="Chair">
-            </div>
-            <h3 class="product-title">Nordic Lounge</h3>
-            <p class="product-desc">Premium minimalist armchair featuring treated oak legs and high-density memory foam padding.</p>
-            
-            <div class="price-row">
-                <span class="price-label">SRP</span>
-                <span class="price-value">₱4,999.00</span>
-            </div>
-            <div class="price-row discount">
-                <span class="price-label">DP</span>
-                <span class="price-value">₱3,399.32</span>
-            </div>
-        </div>
-
-        <!-- Item 2 -->
-        <div class="product-card">
-            <div class="image-container">
-                <img src="https://unsplash.com" alt="Sofa">
-            </div>
-            <h3 class="product-title">Modern Sofa</h3>
-            <p class="product-desc">Grab and rest. A compact, stain-resistant, and pet-proof 3-seater living room centerpiece.</p>
-            
-            <div class="price-row">
-                <span class="price-label">SRP</span>
-                <span class="price-value">₱2,899.00</span>
-            </div>
-            <div class="price-row discount">
-                <span class="price-label">DP</span>
-                <span class="price-value">₱1,971.32</span>
-            </div>
-        </div>
-
-        <!-- Item 3 -->
-        <div class="product-card">
-            <div class="image-container">
-                <img src="https://unsplash.com" alt="Table">
-            </div>
-            <h3 class="product-title">Oak Desk</h3>
-            <p class="product-desc">Work and design. Ultra-durable wooden workspace setup with integrated cable routing management.</p>
-            
-            <div class="price-row">
-                <span class="price-label">SRP</span>
-                <span class="price-value">₱3,799.00</span>
-            </div>
-            <div class="price-row discount">
-                <span class="price-label">DP</span>
-                <span class="price-value">₱2,583.32</span>
-            </div>
-        </div>
-
-        <!-- Item 4 -->
-        <div class="product-card">
-            <div class="image-container">
-                <img src="https://unsplash.com" alt="Bed">
-            </div>
-            <h3 class="product-title">Elegance Bed</h3>
-            <p class="product-desc">Sleep in luxury, anywhere, anytime. Compact velvet frame layout paired with breathable fiber technology.</p>
-            
-            <div class="price-row">
-                <span class="price-label">SRP</span>
-                <span class="price-value">₱6,799.00</span>
-            </div>
-            <div class="price-row discount">
-                <span class="price-label">DP</span>
-                <span class="price-value">₱4,623.32</span>
-            </div>
-        </div>
-
-        <!-- Item 5 -->
-        <div class="product-card">
-            <div class="image-container">
-                <img src="https://unsplash.com" alt="Cabinet">
-            </div>
-            <h3 class="product-title">Slim Cabinet</h3>
-            <p class="product-desc">Bold storage room choice for every interior layout. Waterproof finish and drop-proof sturdy magnetic latches.</p>
-            
-            <div class="price-row">
-                <span class="price-label">SRP</span>
-                <span class="price-value">₱7,999.00</span>
-            </div>
-            <div class="price-row discount">
-                <span class="price-label">DP</span>
-                <span class="price-value">₱5,439.32</span>
-            </div>
-        </div>
-
+    <!-- JavaScript will dynamically inject your furniture products right here -->
+    <div class="product-grid" id="grid-container">
+        <div class="loading-text">Loading latest pricelist data...</div>
     </div>
 </div>
+
+<script>
+    // ⚠️ CHOOSE LINE 125 BELOW AND PASTE YOUR GOOGLE SHEET ID WITHIN THE SINGLE QUOTES
+    const SHEET_ID = '1n-Iu527dYVegxHl5p622y-XxekhtKisLwY-z0CUvs-k';
+    const SHEET_TITLE = 'Sheet1';
+    const csvUrl = 'https://google.com';
+
+
+    // Function to cleanly parse raw CSV string values
+    function parseCSV(text) {
+        let lines = text.split('\n');
+        return lines.map(line => {
+            return line.split('","').map(cell => cell.replace(/^"|"$/g, '').trim());
+        });
+    }
+
+    async function fetchPricelist() {
+        try {
+            const response = await fetch(csvUrl);
+            const dataText = await response.text();
+            const rows = parseCSV(dataText);
+            
+            const gridContainer = document.getElementById('grid-container');
+            const countBadge = document.getElementById('count-badge');
+            
+            // Empty out loading placeholder text
+            gridContainer.innerHTML = '';
+            
+            // Remove headers row from data tracking array
+            const productRows = rows.slice(1).filter(r => r[0] !== "" && r.length > 1);
+
+            countBadge.innerText = `${productRows.length} products`;
+
+            productRows.forEach(row => {
+                // Map layout fields based on custom spreadsheet column order
+                const title = row[0] || 'Unknown Product';
+                const desc = row[1] || '';
+                const imgUrl = row[2] || 'https://placeholder.com';
+                const srp = row[3] || '₱0.00';
+                const dp = row[4] || '₱0.00';
+
+                // Assemble HTML card component framework layout
+                const cardHTML = `
+                    <div class="product-card">
+                        <div class="image-container">
+                            <img src="${imgUrl}" alt="${title}">
+                        </div>
+                        <h3 class="product-title">${title}</h3>
+                        <p class="product-desc">${desc}</p>
+                        
+                        <div class="price-row">
+                            <span class="price-label">SRP</span>
+                            <span class="price-value">${srp}</span>
+                        </div>
+                        <div class="price-row discount">
+                            <span class="price-label">DP</span>
+                            <span class="price-value">${dp}</span>
+                        </div>
+                    </div>
+                `;
+                gridContainer.innerHTML += cardHTML;
+            });
+
+        } catch (error) {
+            console.error('Error syncing layout sheet:', error);
+            document.getElementById('grid-container').innerHTML = 
+                `<div class="loading-text" style="color: red;">Failed to load prices. Verify Sheet ID settings and permission scope.</div>`;
+        }
+    }
+
+    // Run connection process automatically on window lifecycle load execution
+    window.onload = fetchPricelist;
+</script>
 
 </body>
 </html>
