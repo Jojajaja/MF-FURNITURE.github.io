@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Price List</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f7f6; margin: 0; padding: 40px 20px; text-align: center; }
+        h1 { color: #333; margin-bottom: 30px; }
+        .pricing-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; }
+        .card { background: white; border-radius: 8px; padding: 30px; width: 280px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .tier { font-size: 1.5rem; color: #555; font-weight: bold; }
+        .price { font-size: 2.5rem; color: #2ecc71; margin: 15px 0; font-weight: bold; }
+        .features { list-style: none; padding: 0; margin: 20px 0; color: #666; text-align: left; }
+        .features li { padding: 10px 0; border-bottom: 1px solid #eee; }
+        .btn { display: block; background: #3498db; color: white; padding: 12px; text-decoration: none; border-radius: 5px; font-weight: bold; }
+        .btn:hover { background: #2980b9; }
+    </style>
+</head>
+<body>
+
+    <h1>Our Simple Pricing</h1>
+
+    <div class="pricing-container">
+        <!-- Basic Plan -->
+        <div class="card">
+            <div class="tier">Basic</div>
+            <div class="price">$19<span style="font-size:1rem">/mo</span></div>
+            <ul class="features">
+                <li>• Core Features</li>
+                <li>• 1 User Account</li>
+                <li>• Email Support</li>
+            </ul>
+            <a href="#" class="btn">Get Started</a>
+        </div>
+
+        <!-- Pro Plan -->
+        <div class="card" style="border: 2px solid #3498db;">
+            <div class="tier">Pro</div>
+            <div class="price">$49<span style="font-size:1rem">/mo</span></div>
+            <ul class="features">
+                <li>• All Basic Features</li>
+                <li>• 5 User Accounts</li>
+                <li>• 24/7 Priority Support</li>
+            </ul>
+            <a href="#" class="btn" style="background:#2ecc71;">Go Pro</a>
+        </div>
+    </div>
+
+</body>
+</html>
