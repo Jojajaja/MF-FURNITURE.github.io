@@ -153,9 +153,9 @@
     // ⚠️ CHOOSE LINE 125 BELOW AND PASTE YOUR GOOGLE SHEET ID WITHIN THE SINGLE QUOTES
     const SHEET_ID = '1n-Iu527dYVegxHl5p622y-XxekhtKisLwY-z0CUvs-k';
     const SHEET_TITLE = 'Sheet1';
-    const csvUrl = 'https://google.com';
-
-
+    const base = 'https://google.com';
+    const path = '/gviz/tq?tqx=out:csv&sheet=';
+    const csvUrl = base + SHEET_ID + path + SHEET_TITLE;
     // Function to cleanly parse raw CSV string values
     function parseCSV(text) {
         let lines = text.split('\n');
