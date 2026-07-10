@@ -3,50 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Price List</title>
+    <title>Furniture Price List</title>
+    <!-- Import a modern, bold sans-serif font matching the image -->
+    <link href="https://googleapis.com" rel="stylesheet">
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f7f6; margin: 0; padding: 40px 20px; text-align: center; }
-        h1 { color: #333; margin-bottom: 30px; }
-        .pricing-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; }
-        .card { background: white; border-radius: 8px; padding: 30px; width: 280px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s; }
-        .card:hover { transform: translateY(-5px); }
-        .tier { font-size: 1.5rem; color: #555; font-weight: bold; }
-        .price { font-size: 2.5rem; color: #2ecc71; margin: 15px 0; font-weight: bold; }
-        .features { list-style: none; padding: 0; margin: 20px 0; color: #666; text-align: left; }
-        .features li { padding: 10px 0; border-bottom: 1px solid #eee; }
-        .btn { display: block; background: #3498db; color: white; padding: 12px; text-decoration: none; border-radius: 5px; font-weight: bold; }
-        .btn:hover { background: #2980b9; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Top Header Area */
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .header-text {
+            font-size: 14px;
+            color: #555;
+            max-width: 70%;
+            line-height: 1.5;
+        }
+
+        .product-badge {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 15px;
+            font-weight: 900;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive Grid Setup */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        /* Individual Card Styling */
+        .product-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        /* Image Wrapper with fixed height */
+        .image-container {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .image-container img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        /* Typography & Details */
+        .product-title {
+            font-size: 18px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #000;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .product-desc {
+            font-size: 11px;
+            color: #777;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            flex-grow: 1; /* Pushes price block down evenly */
+        }
+
+        /* Price Layout Elements */
+        .price-row {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 6px;
+        }
+
+        .price-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: #555;
+            width: 40px;
+        }
+
+        .price-value {
+            font-size: 16px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .price-row.discount .price-value {
+            color: #e53935; /* Matching the red DP price look */
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
 
-    <h1>Our Simple Pricing</h1>
-
-    <div class="pricing-container">
-        <!-- Basic Plan -->
-        <div class="card">
-            <div class="tier">Basic</div>
-            <div class="price">$19<span style="font-size:1rem">/mo</span></div>
-            <ul class="features">
-                <li>• Core Features</li>
-                <li>• 1 User Account</li>
-                <li>• Email Support</li>
-            </ul>
-            <a href="#" class="btn">Get Started</a>
-        </div>
-
-        <!-- Pro Plan -->
-        <div class="card" style="border: 2px solid #3498db;">
-            <div class="tier">Pro</div>
-            <div class="price">$49<span style="font-size:1rem">/mo</span></div>
-            <ul class="features">
-                <li>• All Basic Features</li>
-                <li>• 5 User Accounts</li>
-                <li>• 24/7 Priority Support</li>
-            </ul>
-            <a href="#" class="btn" style="background:#2ecc71;">Go Pro</a>
-        </div>
+<div class="container">
+    <!-- Top Row -->
+    <div class="header-section">
+        <p class="header-text">
+            With premium materials and ergonomic designs, our signature luxury furniture pieces are the perfect way to transform your living room and elevate your home layout.
+        </p>
+        <div class="product-badge">5 products</div>
     </div>
+
+    <!-- Furniture Grid Items -->
+    <div class="product-grid">
+        
+        <!-- Item 1 -->
+        <div class="product-card">
+            <div class="image-container">
+                <img src="https://unsplash.com" alt="Chair">
+            </div>
+            <h3 class="product-title">Nordic Lounge</h3>
+            <p class="product-desc">Premium minimalist armchair featuring treated oak legs and high-density memory foam padding.</p>
+            
+            <div class="price-row">
+                <span class="price-label">SRP</span>
+                <span class="price-value">₱4,999.00</span>
+            </div>
+            <div class="price-row discount">
+                <span class="price-label">DP</span>
+                <span class="price-value">₱3,399.32</span>
+            </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="product-card">
+            <div class="image-container">
+                <img src="https://unsplash.com" alt="Sofa">
+            </div>
+            <h3 class="product-title">Modern Sofa</h3>
+            <p class="product-desc">Grab and rest. A compact, stain-resistant, and pet-proof 3-seater living room centerpiece.</p>
+            
+            <div class="price-row">
+                <span class="price-label">SRP</span>
+                <span class="price-value">₱2,899.00</span>
+            </div>
+            <div class="price-row discount">
+                <span class="price-label">DP</span>
+                <span class="price-value">₱1,971.32</span>
+            </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="product-card">
+            <div class="image-container">
+                <img src="https://unsplash.com" alt="Table">
+            </div>
+            <h3 class="product-title">Oak Desk</h3>
+            <p class="product-desc">Work and design. Ultra-durable wooden workspace setup with integrated cable routing management.</p>
+            
+            <div class="price-row">
+                <span class="price-label">SRP</span>
+                <span class="price-value">₱3,799.00</span>
+            </div>
+            <div class="price-row discount">
+                <span class="price-label">DP</span>
+                <span class="price-value">₱2,583.32</span>
+            </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="product-card">
+            <div class="image-container">
+                <img src="https://unsplash.com" alt="Bed">
+            </div>
+            <h3 class="product-title">Elegance Bed</h3>
+            <p class="product-desc">Sleep in luxury, anywhere, anytime. Compact velvet frame layout paired with breathable fiber technology.</p>
+            
+            <div class="price-row">
+                <span class="price-label">SRP</span>
+                <span class="price-value">₱6,799.00</span>
+            </div>
+            <div class="price-row discount">
+                <span class="price-label">DP</span>
+                <span class="price-value">₱4,623.32</span>
+            </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="product-card">
+            <div class="image-container">
+                <img src="https://unsplash.com" alt="Cabinet">
+            </div>
+            <h3 class="product-title">Slim Cabinet</h3>
+            <p class="product-desc">Bold storage room choice for every interior layout. Waterproof finish and drop-proof sturdy magnetic latches.</p>
+            
+            <div class="price-row">
+                <span class="price-label">SRP</span>
+                <span class="price-value">₱7,999.00</span>
+            </div>
+            <div class="price-row discount">
+                <span class="price-label">DP</span>
+                <span class="price-value">₱5,439.32</span>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 </body>
 </html>
